@@ -9,17 +9,52 @@
 import UIKit
 
 class ViewController: UIViewController {
+    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var resultLabel: UILabel!
+    @IBAction func buttonPressed(_ sender: Any) {
+        
+        if let userString = textField.text {
+            let userInteger = Int(userString)
+        
+        if let number = userInteger {
+            
+            var isPrime = true
+            
+            if number == 1 {
+                isPrime = false
+            }
+            
+            var i = 2
+            
+            while i < number {
+                
+                if number %  i == 0 {
+                    
+                    isPrime = false
+                    
+                }
+                
+                i += 1
+                
+            }
+            
+            if isPrime {
+                
+                resultLabel.text = "\(number) is prime!"
+            } else {
+                
+                resultLabel.text = "\(number) is not prime."
+            }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+            
+        } else {
+            
+            resultLabel.text = "Please enter a positive whole number."
+        }
+        
+        
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 
 }
 
+}
